@@ -7,22 +7,23 @@ use Controllers\LoginController;
 include '../src/views/header.php';
 require '../vendor/autoload.php';
 
-var_dump($_GET);
+// var_dump($_GET);
 // echo $url;
 
-$login = 
-if (isset($_POST['url'])) {
-    $url = explode("/", $_GET['url']);
-}
-else (new LoginController)->view();
 
+if (!isset($_POST['login'])) {
+    (new LoginController)->view();
+    $ctrl = "";
+}
 // var_dump($url);
 
-$url = explode("/", $_GET['url'])??"home";
+if (isset($_GET['url'])){
+    $url = explode("/", $_GET['url']) ?? $ctrl = "";
+    $ctrl = $url[0];
+    $act = $url[1] ?? NULL;
+    $num = $url[2] ?? NULL;
+}
 
-$ctrl = $url[0];
-$act = $url[1]??NULL;
-$num = $url[2]??NULL;
 
 switch ($ctrl) {
     case "":

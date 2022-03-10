@@ -2,7 +2,7 @@
 
 namespace Controllers;
 
-class AffichageController
+class LoginController
 {
 
     public function view()
