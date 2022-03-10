@@ -1,0 +1,19 @@
+{
+    "name": "mog/blog-mvc_2",
+    "autoload": {
+        "psr-4": {
+            "MVC2\\": "src/",
+            "App\\": "app/",
+            "Controllers\\": "src/controllers/",
+            "Models\\": "src/models/",
+            "Views\\": "src/views/"
+        }
+    },
+    "authors": [
+        {
+            "name": "leo",
+            "email": "guirado.leo@gmail.com"
+        }
+    ],
+    "require": {}
+}

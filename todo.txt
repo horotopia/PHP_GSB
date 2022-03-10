@@ -1,0 +1,3 @@
+- voir autoload blogModel vers pdo
+- revoir les *Controller
+- revoir $contenu
