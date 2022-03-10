@@ -10,8 +10,8 @@ require '../vendor/autoload.php';
 // var_dump($_GET);
 // echo $url;
 
-var_dump($_REQUEST);
-$_POST['login'] = "dandre";
+// var_dump($_REQUEST);
+$_REQUEST['login'] = "dandre";
 if (!isset($_REQUEST['login'])) {
     (new LoginController)->view();
     $ctrl = "";
@@ -19,7 +19,7 @@ if (!isset($_REQUEST['login'])) {
 // var_dump($url);
 
 if (isset($_GET['url'])){
-    echo "chouette";
+    echo "ici : ";
     $url = explode("/", $_GET['url']);
     $ctrl = $url[0];
     $act = $url[1] ?? NULL;
