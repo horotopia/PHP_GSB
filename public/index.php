@@ -10,25 +10,24 @@ require '../vendor/autoload.php';
 // var_dump($_GET);
 // echo $url;
 
-
-if (!isset($_POST['login'])) {
+var_dump($_REQUEST);
+$_POST['login'] = "dandre";
+if (!isset($_REQUEST['login'])) {
     (new LoginController)->view();
     $ctrl = "";
 }
 // var_dump($url);
 
 if (isset($_GET['url'])){
-    $url = explode("/", $_GET['url']) ?? $ctrl = "";
+    echo "chouette";
+    $url = explode("/", $_GET['url']);
     $ctrl = $url[0];
     $act = $url[1] ?? NULL;
     $num = $url[2] ?? NULL;
-}
+} else { $ctrl="home";}
 
 
 switch ($ctrl) {
-    case "":
-        (new HomeController)->view();
-        break;
     case "home":
         (new HomeController)->view();
         break;
@@ -39,6 +38,9 @@ switch ($ctrl) {
     case "affichage":
         // (new HomeController)->view();
         (new AffichageController)->view();
+        break;
+    default:
+        (new HomeController)->view();
         break;
 }
 // include "../src/views/".$ctrl.".php";
