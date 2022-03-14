@@ -8,10 +8,10 @@
 
         </div>
         <ul id="menuList">
-            <!-- <li>
+            <li>
                 Visiteur :<br>
                 <?php echo $_SESSION['prenom'] . "  " . $_SESSION['nom']  ?>
-            </li> -->
+            </li>
             <li class="smenu">
                 <a href="saisie" title="Saisie fiche de frais ">Saisie fiche de frais</a>
             </li>

@@ -9,22 +9,22 @@ require '../vendor/autoload.php';
 
 // var_dump($_GET);
 // echo $url;
-
 // var_dump($_REQUEST);
-$_REQUEST['login'] = "dandre";
-if (!isset($_REQUEST['login'])) {
-    (new LoginController)->view();
-    $ctrl = "";
-}
-// var_dump($url);
 
-if (isset($_GET['url'])){
+$_REQUEST['login'] = "dandre";
+
+
+if (isset($_GET['url'])) {
     echo "ici : ";
     $url = explode("/", $_GET['url']);
     $ctrl = $url[0];
     $act = $url[1] ?? NULL;
     $num = $url[2] ?? NULL;
-} else { $ctrl="home";}
+} elseif ((!isset($_REQUEST['connectOk']))) {
+    $ctrl = "login";
+    $act = "view";
+} else {$ctrl = "home";}
+// var_dump($url);
 
 
 switch ($ctrl) {
@@ -39,8 +39,8 @@ switch ($ctrl) {
         // (new HomeController)->view();
         (new AffichageController)->view();
         break;
-    default:
-        (new HomeController)->view();
+    case "login":
+        (new LoginController)->$act();
         break;
 }
 // include "../src/views/".$ctrl.".php";
