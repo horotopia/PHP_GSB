@@ -2,12 +2,11 @@
     <h2>Identification utilisateur</h2>
 
 
-    <form method="POST" action="index.php?uc=connexion&action=valideConnexion">
-
+    <form method="POST" action="index.php?login/validConnection
 
         <p>
-            <label for="nom">Login*</label>
-            <input id="login" type="text" name="login" size="30" maxlength="45">
+            <label for=" nom">Login*</label>
+        <input id="login" type="text" name="login" size="30" maxlength="45">
         </p>
         <p>
             <label for="mdp">Mot de passe*</label>
