@@ -11,7 +11,9 @@ require '../vendor/autoload.php';
 // echo $url;
 // var_dump($_REQUEST);
 
-$_REQUEST['login'] = "dandre";
+// $_REQUEST['connectOk'] = "ok";
+// $_SESSION['nom'] = 'Andre';
+// $_SESSION['prenom'] = 'David';
 
 
 if (isset($_GET['url'])) {
@@ -20,7 +22,7 @@ if (isset($_GET['url'])) {
     $ctrl = $url[0];
     $act = $url[1] ?? NULL;
     $num = $url[2] ?? NULL;
-} elseif ((!isset($_REQUEST['connectOk']))) {
+} elseif ((!isset($_SESSION['connectOk']))) {
     $ctrl = "login";
     $act = "view";
 } else {$ctrl = "home";}
@@ -41,6 +43,9 @@ switch ($ctrl) {
         break;
     case "login":
         (new LoginController)->$act();
+        break;
+    case "deconnexion":
+        (new LoginController)->deconnect();
         break;
 }
 // include "../src/views/".$ctrl.".php";

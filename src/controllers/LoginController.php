@@ -2,6 +2,7 @@
 
 namespace Controllers;
 use Models\logModel;
+use Controllers\ErrorController;
 
 
 class LoginController
@@ -17,15 +18,18 @@ class LoginController
         $mdp = $_REQUEST['mdp'];
         $visiteur = (new logModel)->logAsked($login, $mdp);
         if (!is_array($visiteur)) {
-            ajouterErreur("Login ou mot de passe incorrect");
-            include("vues/v_erreurs.php");
-            include("vues/v_connexion.php");
+            (new ErrorController)->addError("Login ou mot de passe incorrect");
+            (new LoginController)->view();
         } else {
-            $id = $visiteur['id'];
-            $nom =  $visiteur['nom'];
-            $prenom = $visiteur['prenom'];
-            connecter($id, $nom, $prenom);
-            include("vues/v_sommaire.php");
+            $_SESSION['idVisiteur'] = $visiteur['id'];
+            $_SESSION['nom'] =  $visiteur['nom'];
+            $_SESSION['prenom'] = $visiteur['prenom'];
+            $_SESSION['connectOk'] = "ok";
         }
+    }
+    public function deconnect()
+    {
+        session_destroy();
+        (new LoginController)->view();
     }
 }
