@@ -11,7 +11,6 @@ require '../vendor/autoload.php';
 // echo $url;
 // var_dump($_REQUEST);
 
-// $_REQUEST['connectOk'] = "ok";
 // $_SESSION['nom'] = 'Andre';
 // $_SESSION['prenom'] = 'David';
 
@@ -19,30 +18,32 @@ require '../vendor/autoload.php';
 if (isset($_GET['url'])) {
     echo "ici : ";
     $url = explode("/", $_GET['url']);
-    $ctrl = $url[0];
-    $act = $url[1] ?? NULL;
-    $num = $url[2] ?? NULL;
-} elseif ((!isset($_SESSION['connectOk']))) {
-    $ctrl = "login";
-    $act = "view";
-} else {$ctrl = "home";}
+    $_SESSION['ctrl'] = $url[0];
+    $_SESSION['act'] = $url[1] ?? 'view';
+    $_SESSION['num'] = $url[2] ?? NULL;
+} 
 // var_dump($url);
+require_once '../src/views/login.php';
+if ((!isset($_SESSION['idVisiteur']))) {
+    $_SESSION['ctrl'] = "login";
+    $_SESSION['act'] = "view";
+} else {$_SESSION['ctrl'] = "home"; $_SESSION['act']="view";}
 
 
-switch ($ctrl) {
+switch ($_SESSION['ctrl']) {
     case "home":
-        (new HomeController)->view();
+        (new HomeController)->$_SESSION['act']();
         break;
     case "saisie":
         // (new HomeController)->view();
-        (new SaisieController)->view();
+        (new SaisieController)->$_SESSION['act']();
         break;
     case "affichage":
         // (new HomeController)->view();
-        (new AffichageController)->view();
+        (new AffichageController)->$_SESSION['act']();
         break;
     case "login":
-        (new LoginController)->$act();
+        (new LoginController)->$_SESSION['act']();
         break;
     case "deconnexion":
         (new LoginController)->deconnect();

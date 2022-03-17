@@ -24,12 +24,11 @@ class LoginController
             $_SESSION['idVisiteur'] = $visiteur['id'];
             $_SESSION['nom'] =  $visiteur['nom'];
             $_SESSION['prenom'] = $visiteur['prenom'];
-            $_SESSION['connectOk'] = "ok";
         }
     }
     public function deconnect()
     {
         session_destroy();
-        (new LoginController)->view();
+        header ('location:index.php?login/wiew');
     }
 }

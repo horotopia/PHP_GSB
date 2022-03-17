@@ -5,9 +5,9 @@ namespace Models;
 class logModel
 {
 
-    public function logAsked()
+    public function logAsked($login,$mdp)
     {
-        $data = (new Connect())->query("SELECT id,nom,prenom FROM visiteur WHERE 'login'=$login and 'mdp'=$mdp ");
+        $data = (new Connect())->query("SELECT id,nom,prenom FROM visiteur WHERE 'login'=".$login." and 'mdp'=".$mdp." ");
         return $data;
     }
 }
