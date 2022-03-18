@@ -3,6 +3,7 @@ use Controllers\homeController;
 use Controllers\SaisieController;
 use Controllers\AffichageController;
 use Controllers\LoginController;
+use Controllers\VerifController;
 
 include '../src/views/header.php';
 require '../vendor/autoload.php';
@@ -11,6 +12,7 @@ require '../vendor/autoload.php';
 // echo $url;
 // var_dump($_REQUEST);
 
+$_SESSION['idVisiteur'] = 1;
 // $_SESSION['nom'] = 'Andre';
 // $_SESSION['prenom'] = 'David';
 
@@ -21,13 +23,15 @@ if (isset($_GET['url'])) {
     $_SESSION['ctrl'] = $url[0];
     $_SESSION['act'] = $url[1] ?? 'view';
     $_SESSION['num'] = $url[2] ?? NULL;
-} 
-// var_dump($url);
-require_once '../src/views/login.php';
-if ((!isset($_SESSION['idVisiteur']))) {
-    $_SESSION['ctrl'] = "login";
+} else {
+    $_SESSION['ctrl'] = "home";
     $_SESSION['act'] = "view";
-} else {$_SESSION['ctrl'] = "home"; $_SESSION['act']="view";}
+}
+// var_dump($url);
+if ((!isset($_SESSION['idVisiteur'])))
+{
+    (new VerifController)->check();
+}
 
 
 switch ($_SESSION['ctrl']) {

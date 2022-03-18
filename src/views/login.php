@@ -2,7 +2,7 @@
     <h2>Identification utilisateur</h2>
 
 
-    <form method="POST" action='<?php= $this->validConnection();?>'>
+    <form method="POST" action='?login/view'>
 
         <p>
             <label for="nom">Login*</label>
