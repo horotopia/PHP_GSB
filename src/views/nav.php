@@ -19,7 +19,7 @@
                 <a href="affichage" title="Consultation de mes fiches de frais">Mes fiches de frais</a>
             </li>
             <li class="smenu">
-                <a href="" title="Se déconnecter">Déconnexion</a>
+                <a href="deconnexion" title="Se déconnecter">Déconnexion</a>
             </li>
         </ul>
 

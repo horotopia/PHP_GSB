@@ -2,7 +2,7 @@
     <h2>Identification utilisateur</h2>
 
 
-    <form method="POST" action='?login/view'>
+    <form method="POST" action='login/validConnection'>
 
         <p>
             <label for="nom">Login*</label>

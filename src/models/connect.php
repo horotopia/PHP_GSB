@@ -4,7 +4,7 @@ use \PDO;
 
 class Connect
 {
-    private $dsn = "mysql:dbname=blog;host=localhost;charset=UTF8";
+    private $dsn = "mysql:dbname=gsb;host=localhost;charset=UTF8";
     private $login = "root";
     private $password = "root";
 

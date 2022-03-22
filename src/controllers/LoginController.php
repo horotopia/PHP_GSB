@@ -9,26 +9,36 @@ class LoginController
 {    
     public function view()
     {
+        echo "vue";
         include "../src/views/login.php";
+    }
+
+    public function check()
+    {
+        if ((!isset($_SESSION['idVisiteur']))) 
+        {
+            header ('location:/Git%20GSB/public/login');
+        }
     }
 
     public function validConnection()
     {
-        $login = $_REQUEST['login'];
-        $mdp = $_REQUEST['mdp'];
+        $login = $_POST['login'];
+        $mdp = $_POST['mdp'];
         $visiteur = (new logModel)->logAsked($login, $mdp);
         if (!is_array($visiteur)) {
-            (new ErrorController)->addError("Login ou mot de passe incorrect");
-            (new LoginController)->view();
+            (new ErrorController)->addError("Login ou mot de passe incorrect ".$login." - ".$mdp." - ".var_dump($visiteur));
+            $this->view();
         } else {
             $_SESSION['idVisiteur'] = $visiteur['id'];
             $_SESSION['nom'] =  $visiteur['nom'];
             $_SESSION['prenom'] = $visiteur['prenom'];
+            header ('location:../home/view');
         }
     }
     public function deconnect()
     {
-        session_destroy();
-        header ('location:index.php?login/wiew');
+        session_unset();
+        (new VerifController)->check();
     }
 }
