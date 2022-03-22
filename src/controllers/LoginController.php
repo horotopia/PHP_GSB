@@ -27,7 +27,7 @@ class LoginController
         $mdp = $_POST['mdp'];
         $visiteur = (new logModel)->logAsked($login, $mdp);
         if (!is_array($visiteur)) {
-            (new ErrorController)->addError("Login ou mot de passe incorrect ".$login." - ".$mdp." - ".var_dump($visiteur));
+            (new ErrorController)->addError("Login ou mot de passe incorrect ");
             $this->view();
         } else {
             $_SESSION['idVisiteur'] = $visiteur['id'];

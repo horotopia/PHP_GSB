@@ -11,7 +11,7 @@ require '../vendor/autoload.php';
 // var_dump($_GET);
 // echo $url;
 session_start();
-var_dump($_SESSION);
+// var_dump($_SESSION);
 
 // $_SESSION['idVisiteur'] = 1;
 // $_SESSION['nom'] = 'Andre';
