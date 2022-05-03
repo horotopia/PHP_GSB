@@ -1,4 +1,4 @@
-<h1>Poste des utilisateurs</h1>
+<h1>Poste des utilisateurs :</h1>
 <br>
 <table border=1>
     <tr>

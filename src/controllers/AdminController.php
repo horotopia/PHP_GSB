@@ -8,10 +8,11 @@ use Controllers\ViewController;
 class AdminController extends ViewController
 {
     // ----- Vue -----
-    public function view($info)
+    public function view($info,$selectedUser=[])
     {
+        $selectedUser;
         $users = (new AdminModel)->getUsers();
-        $this->render($info,compact('users'));
+        $this->render($info,compact('selectedUser','users'));
     }
         // ----- Fin Vue -----
 
@@ -47,5 +48,19 @@ class AdminController extends ViewController
                 return $newIdVisiteur;
             }
         } 
+    }
+    public function searchUser() {
+        $params = explode(" ",$_POST['nom']);
+//        $params = [$tab[0],$tab[1]];
+        $selectedUser = (new AdminModel)->searchUser($params);
+        $this->view("adminLogin",$selectedUser);
+    }
+    public function modifLogPwd() {
+        if ($_POST['mdp1']==$_POST['mdp2']) {
+            (new AdminModel)->modifLogPwd();
+        } else {
+            (new ErrorController)->addError("Les mots de passe sont différents");
+        }
+        $this->view('adminLogin');
     }
 }

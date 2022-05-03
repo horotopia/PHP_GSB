@@ -16,6 +16,10 @@ class AdminModel
         $data = (new Connect())->query("SELECT * FROM visiteur")->fetchAll();
         return $data;
     }
+    public function searchUser($params) {
+        $data = (new Connect())->query("SELECT * FROM visiteur WHERE nom=? AND prenom=?",$params)->fetchAll();
+        return $data;
+    }
         // ----- Fin Getter -----
     // ----- Modif -----
     public function modifUserAddr()
@@ -27,6 +31,10 @@ class AdminModel
     {
         $params = [$_POST['nom'], $_POST['prenom'], $_POST['dateEmbauche'], $_POST['role'], $_POST['id']];
         $data = (new Connect())->query("UPDATE visiteur SET nom=?, prenom=?, dateEmbauche=?, role=? WHERE id=?",$params);
+    }
+    public function modifLogPwd() {
+        $params = [$_POST['login'],$_POST['mdp1'],$_POST['id']];
+        $data = (new Connect())->query("UPDATE visiteur SET login=?, mdp=? WHERE id=?",$params);
     }
     // ----- Fin Modif -----
     // ----- Ajout -----

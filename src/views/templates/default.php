@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 
 <head>
-    <base href="/ProgEnPHP/PHP_MVC_GSB/public/" />
+<!--    <base href="/PHP_GSB/public/" /> //maison-->
+    <base href="/ProgEnPHP/PHP_MVC_GSB/public/" /> <!-- //ecole -->
     <title>Intranet du Laboratoire Galaxy-Swiss Bourdin</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link href="./css/styles.css" rel="stylesheet" type="text/css" />
